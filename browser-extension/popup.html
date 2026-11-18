@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modesty settings</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <h1>Modesty</h1>
+      <p class="tagline">nsfw protection</p>
+
+      <label for="threshold">Block images rated at or above</label>
+      <div class="rating">
+        <input id="threshold" type="number" min="1" max="10" value="6">
+        <span>Default: 6</span>
+      </div>
+
+      <label for="scanner-url">Modesty scan service</label>
+      <input id="scanner-url" type="url" autocomplete="url" spellcheck="false">
+      <p class="note">Images are sent to this HTTPS service for scanning. The service may retain their hashes and ratings.</p>
+
+      <label class="video-option">
+        <input id="scan-video" type="checkbox">
+        Scan videos too (off by default)
+      </label>
+      <p class="note">Video scanning is optional and experimental, and remains parked while image scanning is completed. Direct files only; streaming video is unsupported.</p>
+
+      <p id="status" role="status">Connecting to this page…</p>
+      <button id="retry" type="button">Retry not-assessed media</button>
+      <p id="error" class="error" role="alert" hidden></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

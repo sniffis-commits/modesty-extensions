@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modesty - nsfw protection (API)</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <h1>Modesty</h1>
+      <p class="tagline">nsfw protection — API mode</p>
+
+      <label for="api-key">API Key</label>
+      <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-...">
+      <p class="note">Required for API mode. Get your key from the Modesty service.</p>
+
+      <label for="api-url">Modesty scan service URL</label>
+      <input id="api-url" type="url" autocomplete="url" spellcheck="false">
+      <p class="note">Images are sent to this HTTPS service for scanning.</p>
+
+      <label for="threshold">Block images rated at or above</label>
+      <div class="rating">
+        <input id="threshold" type="number" min="1" max="10" value="6">
+        <span>Default: 6</span>
+      </div>
+
+      <label class="video-option">
+        <input id="scan-video" type="checkbox">
+        Scan videos too (off by default)
+      </label>
+      <p class="note">Video scanning is optional and experimental. Direct files only; streaming video is unsupported.</p>
+
+      <p id="status" role="status">Connecting to this page…</p>
+      <button id="retry" type="button">Retry not-assessed media</button>
+      <p id="error" class="error" role="alert" hidden></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

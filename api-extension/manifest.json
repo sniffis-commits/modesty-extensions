@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Modesty - nsfw protection (API)",
+  "description": "Scan page images via the Modesty hosted API service. Requires API key and subscription.",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Modesty - API",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

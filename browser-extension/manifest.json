@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Modesty - nsfw protection",
+  "description": "Scan page images with the Modesty scanner. Offline mode uses a local Rust daemon via Native Messaging; API mode sends to a hosted HTTPS service.",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab", "nativeMessaging"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Modesty",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "externally_connectable": {
+    "ids": ["*"]
+  }
+}
